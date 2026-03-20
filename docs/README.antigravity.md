@@ -15,8 +15,8 @@ npx superpowers-zh
 
 ```bash
 git clone https://github.com/jnMetaCode/superpowers-zh.git
-mkdir -p /your/project/.antigravity
-cp -r superpowers-zh/skills/* /your/project/.antigravity/
+mkdir -p /your/project/.antigravity/skills
+cp -r superpowers-zh/skills/* /your/project/.antigravity/skills/
 ```
 
 ## 工作原理

@@ -11,13 +11,13 @@ const AGENTS_SRC = resolve(__dirname, '..', 'agents');
 const PROJECT_DIR = process.cwd();
 
 const TARGETS = [
-  { name: 'Claude Code',   dir: '.claude/skills' },
-  { name: 'Cursor',        dir: '.cursor/skills' },
-  { name: 'Codex CLI',     dir: '.codex/skills'  },
-  { name: 'Kiro',          dir: '.kiro/steering'  },
-  { name: 'Trae',          dir: '.trae/rules'     },
-  { name: 'Antigravity',   dir: '.antigravity'    },
-  { name: 'VS Code',       dir: '.github'         },
+  { name: 'Claude Code',   dir: '.claude/skills',           detect: '.claude' },
+  { name: 'Cursor',        dir: '.cursor/skills',           detect: '.cursor' },
+  { name: 'Codex CLI',     dir: '.codex/skills',            detect: '.codex' },
+  { name: 'Kiro',          dir: '.kiro/steering',            detect: '.kiro' },
+  { name: 'Trae',          dir: '.trae/rules',               detect: '.trae' },
+  { name: 'Antigravity',   dir: '.antigravity/skills',       detect: '.antigravity' },
+  { name: 'VS Code',       dir: '.github/superpowers',       detect: '.github/copilot-instructions.md' },
 ];
 
 function countDirs(dir) {
@@ -52,10 +52,10 @@ function install() {
   let installed = 0;
 
   for (const target of TARGETS) {
-    const configDir = resolve(PROJECT_DIR, target.dir.split('/')[0]);
+    const detectPath = resolve(PROJECT_DIR, target.detect);
     const dest = resolve(PROJECT_DIR, target.dir);
 
-    if (existsSync(configDir) || installed === 0) {
+    if (existsSync(detectPath)) {
       mkdirSync(dest, { recursive: true });
       cpSync(SKILLS_SRC, dest, { recursive: true });
       const count = countDirs(dest);
