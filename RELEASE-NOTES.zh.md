@@ -29,7 +29,12 @@
 
 ### 主动修复上游 v5.1.0 的疏忽
 
-- **`.cursor-plugin/plugin.json`** 删除 dangling 的 `"agents": "./agents/"` 和 `"commands": "./commands/"` 两行。上游 v5.1.0 删了目录但忘了同步清理 manifest（git blame 显示这两行从 2026-02-13 加入后从未更新）。中文 fork 主动修掉，并向上游开 issue 提醒。
+- **`.cursor-plugin/plugin.json`** 删除 dangling 的 `"agents": "./agents/"` 和 `"commands": "./commands/"` 两行。上游 v5.1.0 删了目录但忘了同步清理 manifest（git blame 显示这两行从 2026-02-13 加入后从未更新）。中文 fork 主动修掉（向上游开 issue 是后续动作）。
+
+### 修中文版自己的老漂移（PR #23）
+
+- **`.claude-plugin/marketplace.json`** 的 `plugins[0].version` 卡在 `1.1.8` 的老漂移修复（追上其他 4 个 manifest，1.3.0 release 时统一升到 1.3.0）。原因是中文版简化版 `sync-plugin-version.js` 之前只 match 顶层 `"version":` 字段，跳过嵌套位置；导致 Claude Code marketplace 用户看到的 plugin 版本一直停在 1.1.8，跟 npm 包真实版本不同步。
+- **`scripts/sync-plugin-version.js`** 增强为支持嵌套字段路径（`plugins.0.version`）。`TARGETS` 改为对象数组 `{ path, field }`，对齐上游 `.version-bump.json` 格式。仍使用 regex 替换而非 JSON re-stringify，保留原文件格式（缩进、行内/多行数组等不被破坏）。
 
 ### 不引入
 
