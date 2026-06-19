@@ -310,6 +310,9 @@ function layout({ lang, base, title, desc, body, langHref, extraHead = '' }) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L02QK4EVDL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02QK4EVDL');</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta property="og:title" content="${esc(title)}">
@@ -570,15 +573,18 @@ function build() {
   };
   collectScriptHashes(DIST);
 
-  // 严格 CSP：脚本仅允许 'self' + 本站内联脚本的 hash；样式仅 'self'（无内联样式）；
-  // 禁用插件/内联事件；锁死 base-uri 与 frame 祖先（防点击劫持）。外链均为 <a> 导航，不受影响。
+  // 严格 CSP：脚本仅允许 'self' + 本站内联脚本的 hash（含 GA 内联配置块，自动收集）；
+  // 样式仅 'self'；禁用插件/内联事件；锁死 base-uri 与 frame 祖先。
+  // Google Analytics (gtag) 需放行 googletagmanager（加载器）与 analytics（上报）域名。
+  const GA_SCRIPT = 'https://www.googletagmanager.com';
+  const GA_CONNECT = 'https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com';
   const csp = [
     "default-src 'self'",
-    "script-src 'self' " + [...scriptHashes].join(' '),
+    "script-src 'self' " + GA_SCRIPT + ' ' + [...scriptHashes].join(' '),
     "style-src 'self'",
-    "img-src 'self' data:",
+    "img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com",
     "font-src 'self'",
-    "connect-src 'self'",
+    "connect-src 'self' " + GA_CONNECT,
     "object-src 'none'",
     "base-uri 'self'",
     "frame-ancestors 'none'",
