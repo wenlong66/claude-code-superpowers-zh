@@ -139,6 +139,7 @@ const T = {
     bookTitle: '装好之后，配上方法论效率翻倍',
     bookDesc: '《AI 编程实战 · 方法论三卷书》—— 10 个 AI 编程工具完整教程 + 真实踩坑。在线书 + PDF，永久免费。',
     bookBtn: '免费阅读 ↗',
+    aiolaolaBtn: '免费学 AI 编程 · aiOlaOla ↗',
     sponsorTitle: '赞助商',
     sponsorDesc: '稳定高速的 API 中继服务，为 Claude Code、Codex 等平台提供 API 中继与 AI 生图服务。',
     sponsorCta: '🙏 想出现在这里？联系 <b>jnMetaCode@qq.com</b>',
@@ -148,7 +149,7 @@ const T = {
     footCols: [
       { h: '产品', links: [['特性', '#why'], ['Skills', '#skills'], ['支持工具', '#tools'], ['FAQ', '#faq']] },
       { h: '资源', links: [['GitHub', 'https://github.com/jnMetaCode/superpowers-zh'], ['npm', 'https://www.npmjs.com/package/superpowers-zh'], ['方法论三卷书', 'https://book.aibuzhiyu.com/']] },
-      { h: '生态', links: [['aiOlaOla · 从零学会 AI 编程', 'https://aiolaola.com/'], ['X / Twitter', 'https://x.com/jnMetaCode'], ['公众号 AI不止语', 'https://aiolaola.com/'], ['姐妹项目', 'https://github.com/jnMetaCode']] },
+      { h: '生态', links: [['aiOlaOla · 从零学会 AI 编程', 'https://aiolaola.com/?utm_source=sp1'], ['X / Twitter', 'https://x.com/jnMetaCode'], ['公众号 AI不止语', 'https://aiolaola.com/'], ['姐妹项目', 'https://github.com/jnMetaCode']] },
       { h: '社区', links: [['提交 Issue', 'https://github.com/jnMetaCode/superpowers-zh/issues'], ['贡献指南', 'https://github.com/jnMetaCode/superpowers-zh/blob/main/CLAUDE.md'], ['联系邮箱', 'mailto:jnMetaCode@qq.com']] },
     ],
     footTag: 'AI 编程超能力 · 中文增强版 · MIT License',
@@ -224,6 +225,7 @@ const T = {
     bookTitle: 'Pair it with the methodology for 2× efficiency',
     bookDesc: '"AI Coding in Practice · The Three-Volume Methodology" — full tutorials for 10 AI coding tools plus real-world pitfalls. Online book + PDF, free forever.',
     bookBtn: 'Read free ↗',
+    aiolaolaBtn: 'Learn AI coding free · aiOlaOla ↗',
     sponsorTitle: 'Sponsors',
     sponsorDesc: 'A fast, reliable API relay for Claude Code, Codex and more — API relay and AI image generation.',
     sponsorCta: '🙏 Want to appear here? Contact <b>jnMetaCode@qq.com</b>',
@@ -233,7 +235,7 @@ const T = {
     footCols: [
       { h: 'Product', links: [['Features', '#why'], ['Skills', '#skills'], ['Tools', '#tools'], ['FAQ', '#faq']] },
       { h: 'Resources', links: [['GitHub', 'https://github.com/jnMetaCode/superpowers-zh'], ['npm', 'https://www.npmjs.com/package/superpowers-zh'], ['Methodology book', 'https://book.aibuzhiyu.com/']] },
-      { h: 'Ecosystem', links: [['aiOlaOla', 'https://aiolaola.com/'], ['X / Twitter', 'https://x.com/jnMetaCode'], ['Sister projects', 'https://github.com/jnMetaCode']] },
+      { h: 'Ecosystem', links: [['aiOlaOla', 'https://aiolaola.com/?utm_source=sp1'], ['X / Twitter', 'https://x.com/jnMetaCode'], ['Sister projects', 'https://github.com/jnMetaCode']] },
       { h: 'Community', links: [['Open an Issue', 'https://github.com/jnMetaCode/superpowers-zh/issues'], ['Contributing', 'https://github.com/jnMetaCode/superpowers-zh/blob/main/CLAUDE.md'], ['Contact', 'mailto:jnMetaCode@qq.com']] },
     ],
     footTag: 'AI coding superpowers · Chinese-enhanced · MIT License',
@@ -485,7 +487,8 @@ function renderLanding(skills, lang) {
 
   <section class="book"><div class="book-inner"><div>
     <h2>${t.bookTitle}</h2><p>${t.bookDesc}</p>
-    <a class="btn btn-primary" href="https://book.aibuzhiyu.com/" target="_blank" rel="noopener">${t.bookBtn}</a>
+    <a class="btn btn-primary" href="https://aiolaola.com/?utm_source=sp1" target="_blank" rel="noopener">${t.aiolaolaBtn}</a>
+    <a class="btn btn-ghost" href="https://book.aibuzhiyu.com/" target="_blank" rel="noopener">${t.bookBtn}</a>
   </div></div></section>
 
   <section class="sponsor">
